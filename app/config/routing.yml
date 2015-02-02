@@ -1,8 +1,12 @@
+webmoney_main:
+    resource: "@WebFamilyMainBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 web_family_money:
     resource: "@WebFamilyMoneyBundle/Controller/"
     type:     annotation
     prefix:   /
-
-app:
-    resource: @AppBundle/Controller/
-    type:     annotation
+    
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
