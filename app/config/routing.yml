@@ -1,4 +1,4 @@
-webmoney_main:
+web_family_main:
     resource: "@WebFamilyMainBundle/Controller/"
     type:     annotation
     prefix:   /
