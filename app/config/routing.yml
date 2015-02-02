@@ -1,3 +1,8 @@
+web_family_money:
+    resource: "@WebFamilyMoneyBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 app:
     resource: @AppBundle/Controller/
     type:     annotation
