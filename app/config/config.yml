@@ -75,4 +75,4 @@ swiftmailer:
 fos_user:
     db_driver: orm
     firewall_name: main
-    user_class: WebFamily\MoneyBundle\Entity\User
+    user_class: WebFamily\MainBundle\Entity\User
