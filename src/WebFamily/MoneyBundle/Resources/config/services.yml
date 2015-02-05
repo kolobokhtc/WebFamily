@@ -1,0 +1,7 @@
+services:
+    my.listener:
+        class: WebFamily\MainBundle\Listener\EntityListener
+        arguments:
+            - "@security.token_storage"
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }

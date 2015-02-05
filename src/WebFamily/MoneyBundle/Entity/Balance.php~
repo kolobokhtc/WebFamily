@@ -1,0 +1,86 @@
+<?php
+
+namespace WebFamily\MoneyBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="Balance")
+ * @ORM\HasLifecycleCallbacks()
+ */
+class Balance {
+
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="\WebFamily\MainBundle\Entity\User", inversedBy="Balances")
+     * @ORM\JoinColumn(name="UserID", referencedColumnName="id")
+     */
+    private $User;
+
+    /**
+     * @ORM\Column(type="integer");
+     */
+    protected $Amount;
+
+    /**
+     * @ORM\Column(type="integer");
+     */
+    protected $Type;
+
+    /**
+     * @ORM\Column(type="datetime");
+     */
+    protected $CreateDate;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="\WebFamily\MainBundle\Entity\User")
+     * @ORM\JoinColumn(name="CreatedBy", referencedColumnName="id")
+     */
+    protected $CreatedBy;
+
+    /**
+     * @ORM\Column(type="string", length=15);
+     */
+    protected $CreaterIP;
+
+    /**
+     * @ORM\Column(type="datetime");
+     */
+    protected $UpdateDate;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="\WebFamily\MainBundle\Entity\User")
+     * @ORM\JoinColumn(name="UpdatedBy", referencedColumnName="id")
+     */
+    protected $UpdatedBy;
+
+    /**
+     * @ORM\Column(type="string", length=15, nullable=true);
+     */
+    protected $UpdaterIP;
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist() {
+	$this->CreateDate = new \DateTime();
+	$this->UpdateDate = new \DateTime();
+	$this->CreaterIP = $_SERVER['REMOTE_ADDR'];
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate() {
+	$this->UpdateDate = new \DateTime();
+	$this->UpdaterIP = $_SERVER['REMOTE_ADDR'];
+    }
+
+}
