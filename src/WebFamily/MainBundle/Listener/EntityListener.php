@@ -15,9 +15,13 @@ class EntityListener
         $this->token_storage = $token_storage;
     }
 
+    /**
+     * @param LifecycleEventArgs $args
+     * @todo need fix!!!
+     */
     public function prePersist(LifeCycleEventArgs $args)
     {
-        $entity = $args->getEntity();
-        $entity->setCreatedBy($this->token_storage->getToken()->getUser());
+        //$entity = $args->getEntity();
+        //$entity->setCreatedBy($this->token_storage->getToken()->getUser());
     }
 }
